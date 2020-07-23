@@ -48,18 +48,6 @@ export class AppRouter extends CoreRouter {
         );
 
         this._handleChildren(child, concatenatedUrl);
-
-        // child.children?.forEach((secondChild: IRouterConfig) => {
-        //   const fullRoute = route.url + child.url + secondChild.url;
-        //   Logger.info(`\nConfiguring routes for ${fullRoute}`);
-
-        //   this.routerService.use(
-        //     fullRoute,
-        //     container.resolve(secondChild.router).generateRoutes()
-        //   );
-
-        // this._handleChildren(secondChild);
-        // });
       });
     }
   }
