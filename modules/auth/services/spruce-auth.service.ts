@@ -6,8 +6,6 @@ import { IJwtConfig } from '../interfaces/jwt-config.interface';
 
 @injectable()
 export class SpruceAuthService {
-  constructor() {}
-
   public hash(password: string, strength?: number): Promise<string> {
     return hash(password, strength || 12);
   }

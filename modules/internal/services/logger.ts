@@ -1,5 +1,6 @@
 import 'colors';
 
+/* tslint:disable:no-console */
 export class Logger {
   static default(text: string): void {
     console.log(text);
