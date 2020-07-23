@@ -1,0 +1,9 @@
+dependencies: [
+  Express,
+  Cors,
+  tsyringe,
+  Authentication,
+  Http,
+  Internal,
+  Routing
+]
