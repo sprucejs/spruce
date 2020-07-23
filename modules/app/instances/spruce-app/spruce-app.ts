@@ -5,11 +5,11 @@ import express from 'express';
 import { container, InjectionToken } from 'tsyringe';
 import { constructor } from 'tsyringe/dist/typings/types';
 
-import { AuthMiddleware } from '../../auth';
-import { ErrorController } from '../../errors';
-import { Logger } from '../../internal';
-import { AppRouter, IRouterConfig } from '../../routing';
-import { IModule } from '../interfaces/module.interface';
+import { AuthMiddleware } from '../../../auth';
+import { ErrorController } from '../../../errors';
+import { Logger } from '../../../internal';
+import { AppRouter, IRouterConfig } from '../../../routing';
+import { IModule } from '../../interfaces';
 
 export class SpruceApp {
   public expressApp: express.Application;

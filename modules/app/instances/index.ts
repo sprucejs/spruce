@@ -1,1 +1,1 @@
-export * from './spruce-app';
+export * from './spruce-app/spruce-app';
