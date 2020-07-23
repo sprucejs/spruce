@@ -1,6 +1,6 @@
 {
   "moduleFileExtensions": ["json", "ts", "js"],
-  "rootDir": "src",
+  "rootDir": "modules",
   "modulePaths": ["<rootDir>"],
   "testRegex": ".spec.ts$",
   "transform": {
@@ -8,5 +8,7 @@
   },
   "coveragePathIgnorePatterns": ["factories", ".stub.ts", ".constant.ts"],
   "coverageDirectory": "./coverage",
-  "testEnvironment": "node"
+  "testEnvironment": "node",
+  "setupFiles": ["./internal/testing/jest-setup.ts"],
+  "autoMock": true
 }

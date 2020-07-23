@@ -3,7 +3,7 @@ import { sign, verify } from 'jsonwebtoken';
 import { injectable } from 'tsyringe';
 import { promisify } from 'util';
 
-import { IJwtConfig } from '../interfaces/jwt-config.interface';
+import { IJwtConfig } from '../../interfaces/jwt-config.interface';
 
 @injectable()
 export class SpruceAuthService {
