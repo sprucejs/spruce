@@ -1,6 +1,6 @@
 {
   "name": "@sprucejs/core",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "",
   "scripts": {
     "dev": "tsc-watch --onSuccess \"npm run demo\"",
@@ -40,6 +40,8 @@
     "rimraf": "^3.0.2",
     "tsyringe": "^4.3.0"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*"
   ]
