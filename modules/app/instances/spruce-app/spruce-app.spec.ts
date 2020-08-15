@@ -1,9 +1,19 @@
 import { Application } from 'express';
-import { container, injectable, InjectionToken } from 'tsyringe';
+import { container, InjectionToken } from 'tsyringe';
 
 import { AuthMiddleware } from '../../../auth';
 import { ErrorController } from '../../../errors';
 import { Logger } from '../../../internal';
+import {
+  mockChildModule,
+  MockProviderChild,
+  MockProviderGrandChild,
+  MockProviderParent,
+  MockRouterChild,
+  MockRouterGrandChild,
+  MockRouterParent,
+} from '../../../internal/testing/stubs/module-router.stub';
+import { Testing } from '../../../internal/testing/utilities/testing';
 import { AppRouter, ISpruceRouter } from '../../../routing';
 import { IModule } from '../../interfaces';
 import { ExpressApplicationStub } from '../../testing/express-application.stub';
@@ -23,6 +33,7 @@ describe('SpruceApp', () => {
       ],
       imports: [mockChildModule]
     };
+    Testing.stubStaticClasses(Logger, ErrorController);
     expressApp = (new ExpressApplicationStub() as unknown) as Application;
     app = new SpruceApp(expressApp, appModule);
   });
@@ -60,7 +71,7 @@ describe('SpruceApp', () => {
 
   describe('when setting the authenticator', () => {
     beforeEach(() => {
-      jest.spyOn(container, 'register');
+      Testing.spyOnAndStub(container, 'register');
       app.setAuthenticator(AuthMiddleware);
     });
 
@@ -73,7 +84,6 @@ describe('SpruceApp', () => {
 
   describe('when starting the server', () => {
     beforeEach(() => {
-      jest.spyOn(Logger, 'success');
       app.listen(3000);
     });
 
@@ -93,8 +103,7 @@ describe('SpruceApp', () => {
 
     beforeEach(() => {
       setRoutesFn = jest.fn().mockReturnValue('routes');
-      jest.spyOn(ErrorController, 'create');
-      jest.spyOn(container, 'resolve').mockReturnValue({
+      Testing.spyOnAndMock(container, 'resolve', {
         setRoutes: setRoutesFn
       });
       app.init();
@@ -152,41 +161,3 @@ describe('SpruceApp', () => {
     });
   });
 });
-
-@injectable()
-class MockProviderParent {}
-
-@injectable()
-class MockProviderChild {}
-
-@injectable()
-class MockProviderGrandChild {}
-
-@injectable()
-class MockRouterParent {}
-
-@injectable()
-class MockRouterChild {}
-
-// tslint:disable-next-line: max-classes-per-file
-@injectable()
-class MockRouterGrandChild {}
-
-const mockGrandchildModule = {
-  providers: [MockProviderGrandChild],
-  imports: [],
-  routes: [
-    {
-      url: '/route3',
-      router: MockRouterGrandChild as InjectionToken<ISpruceRouter>
-    }
-  ]
-};
-
-const mockChildModule: IModule = {
-  providers: [MockProviderChild],
-  imports: [mockGrandchildModule],
-  routes: [
-    { url: '/route2', router: MockRouterChild as InjectionToken<ISpruceRouter> }
-  ]
-};

@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { container, delay, inject, injectable } from 'tsyringe';
 
-import { Logger } from '../../internal';
-import { CoreRouter } from '../instances';
-import { IRouterConfig } from '../interfaces';
-import { RouterService } from '../services';
+import { RouterService } from '..';
+import { Logger } from '../../../internal';
+import { CoreRouter } from '../../instances';
+import { IRouterConfig } from '../../interfaces';
 
 @injectable()
 export class AppRouter extends CoreRouter {
