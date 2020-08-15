@@ -2,7 +2,6 @@
   "name": "@sprucejs/core",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "tsc-watch --onSuccess \"npm run demo\"",
     "demo": "node dist/modules/demo/src/main.js",
@@ -11,7 +10,8 @@
     "build:watch": "tsc --watch",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:cov": "jest --coverage --config jest.config.json --no-cache"
+    "test:cov": "jest --coverage --config jest.config.json --no-cache",
+    "prepare": "rimraf dist && tsc"
   },
   "author": "Daniel Cornock",
   "license": "ISC",
@@ -37,6 +37,10 @@
     "lodash": "^4.17.20",
     "promisify": "0.0.3",
     "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
     "tsyringe": "^4.3.0"
-  }
+  },
+  "files": [
+    "dist/**/*"
+  ]
 }
