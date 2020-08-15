@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import { autoInjectable } from 'tsyringe';
 
-import { INext, IReq, IRes } from '../../http';
-import { Logger } from '../../internal';
-import { ExpressRouterFactory } from '../factories';
-import { middlewareFn } from '../interfaces';
+import { INext, IReq, IRes } from '../../../http';
+import { Logger } from '../../../internal';
+import { ExpressRouterFactory } from '../../factories';
+import { middlewareFn } from '../../interfaces';
 
 @autoInjectable()
 export class RouterService {

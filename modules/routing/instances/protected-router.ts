@@ -1,5 +1,5 @@
 import { AuthMiddleware } from '../../auth';
-import { RouterService } from '../services/router.service';
+import { RouterService } from '../services/router-service/router.service';
 import { CoreRouter } from './core-router.abstract';
 
 export abstract class ProtectedRouter extends CoreRouter {
