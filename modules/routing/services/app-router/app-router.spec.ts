@@ -6,7 +6,7 @@ import {
   MockRouterChild,
   MockRouterParent,
 } from '../../../internal/testing/stubs/module-router.stub';
-import { Testing } from '../../../internal/testing/utilities/testing';
+import { Testing } from '../../../testing/services/testing';
 import { IRouterConfig, ISpruceRouter } from '../../interfaces';
 import { RouterServiceStub } from '../router-service/router-service.stub';
 import { RouterService } from '../router-service/router.service';

@@ -1,4 +1,5 @@
 import { forEach, noop } from 'lodash';
+import { container, InjectionToken } from 'tsyringe';
 
 export class Testing {
   public static spyOnAndStub(object: any, value: string): void {
@@ -20,4 +21,25 @@ export class Testing {
       });
     });
   }
+
+  public static configureTestingModule(config: ITestingModuleConfig) {
+    config.providers.forEach((provider: IOverrideProvider) => {
+      container.register(provider.provide, { useValue: provider.useValue });
+    });
+
+    this.stubStaticClasses(config.statics);
+
+    return container.resolve(config.class);
+  }
+}
+
+export interface ITestingModuleConfig {
+  providers: Array<IOverrideProvider>;
+  statics: Array<InjectionToken>;
+  class: InjectionToken;
+}
+
+export interface IOverrideProvider {
+  provide: InjectionToken;
+  useValue: any;
 }

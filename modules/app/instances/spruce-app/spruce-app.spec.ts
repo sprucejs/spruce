@@ -13,8 +13,8 @@ import {
   MockRouterGrandChild,
   MockRouterParent,
 } from '../../../internal/testing/stubs/module-router.stub';
-import { Testing } from '../../../internal/testing/utilities/testing';
 import { AppRouter, ISpruceRouter } from '../../../routing';
+import { Testing } from '../../../testing/services/testing';
 import { IModule } from '../../interfaces';
 import { ExpressApplicationStub } from '../../testing/express-application.stub';
 import { SpruceApp } from './spruce-app';
