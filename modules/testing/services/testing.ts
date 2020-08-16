@@ -25,6 +25,7 @@ export class Testing {
   public static configureTestingModule(config: ITestingModuleConfig) {
     config.providers.forEach((provider: IOverrideProvider) => {
       container.register(provider.provide, { useValue: provider.useValue });
+      container.resolve(provider.provide);
     });
 
     this.stubStaticClasses(config.statics);
@@ -35,7 +36,7 @@ export class Testing {
 
 export interface ITestingModuleConfig {
   providers: Array<IOverrideProvider>;
-  statics: Array<InjectionToken>;
+  statics?: Array<InjectionToken>;
   class: InjectionToken;
 }
 
