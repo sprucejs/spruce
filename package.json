@@ -33,7 +33,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jest": "^26.1.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.20",
     "promisify": "0.0.3",
     "reflect-metadata": "^0.1.13",
